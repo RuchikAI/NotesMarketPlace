@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title>@ViewBag.Title - NoteMarketPlace</title>
+
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Font-Awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/Bootstrap/r.css">
+    <link rel="stylesheet" href="~/Content/style1.css">
+    <link rel="stylesheet" href="~/Content/Responsive-front.css">
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-fixed-top" id="nav">
+            <div class="container">
+                <div class="row header-margin">
+                    <div class="site-nav-wrapper">
+                    </div>
+
+                    <div class="navbar-header">
+                        <span id="mobile-nav-open-btn" style="color: white;">&#9776;</span>
+                        <a class="navbar-brand navbar-home" href="~/Home">
+                            <img src="~/Content/Front_Images/images/top-logo.png" alt="logo" class="img-responsive">
+                        </a>
+                    </div>
+
+
+                    <div class="collapse navbar-collapse ">
+
+                        <ul class="nav navbar-nav pull-right nav-home">
+                            <li><a href="@Url.Action("SearchNotes","User")" class="nav-link"><span>Search Notes</span></a></li>
+                            <li>
+                                @if (Session["EmailID"] == null)
+                                {
+                                    <a class="nav-link" href="@Url.Action("Login","Login")"><span>Sell Your Notes</span></a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link" href="@Url.Action("Dashboard","SellYourNote")"><span>Sell Your Notes</span></a>
+                                }
+                            </li>
+
+                            <li><a href="@Url.Action("FAQ","Home")"><span>FAQ</span></a></li>
+                            <li><a href="@Url.Action("ContactUs","Home")" class="nav-link"><span>Contact Us</span></a></li>
+
+                            <li>
+                                @if (Session["EmailID"] == null)
+                                {
+                                    <a href="~/Login"><button type="submit" class="btn btn-home"><span>Login</span></button></a>
+
+
+                                }
+                                else
+                                {
+
+                                    <a href="@Url.Action("Logout","Login")" class="btn btn-home"><span>Logout</span></a>
+                                }
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div id="mobile-nav">
+                        <span id="mobile-nav-close-btn">&times;</span>
+                        <div id="mobile-nav-content">
+                            <ul class="nav nav-home">
+                                <li><a href="@Url.Action("SearchNotes","User")" class="nav-link"><span>Search Notes</span></a></li>
+                                <li>
+                                    @if (Session["EmailID"] == null)
+                                    {
+                                        <a class="nav-link" href="@Url.Action("Login","Login")"><span>Sell Your Notes</span></a>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-link" href="@Url.Action("Dashboard","User")"><span>Sell Your Notes</span></a>
+                                    }
+                                </li>
+
+                                <li><a href="@Url.Action("FAQ","Home")"><span>FAQ</span></a></li>
+                                <li><a href="@Url.Action("ContactUs","Home")" class="nav-link"><span>Contact Us</span></a></li>
+
+                                <li>
+                                    @if (Session["EmailID"] == null)
+                                    {
+                                        <a href="~/Login"><button type="submit" class="btn btn-home"><span>Login</span></button></a>
+
+
+                                    }
+                                    else
+                                    {
+
+                                        <a href="~/Logout"><button type="submit" class="btn btn-home"><span>Logout</span></button></a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody();
+
+    <hr>
+    <footer>
+        <div class="for-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div id="footer-text1">
+                            <p>Copyright&#169 TatvaSoft All rights reserved.</p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 col-sm-6 icons text-right">
+                        <ul class="social-list">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="~/Script/jquery.js"></script>
+
+    <script src="~/Script/bootstrap_js/r.js">
+    </script>
+
+    <script src="~/Script/jquery.validate.min.js">
+
+    </script>
+    <script src="~/Script/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Script/script.js"></script>
+</body>
+
+</html>

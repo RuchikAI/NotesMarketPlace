@@ -1,0 +1,305 @@
+﻿@model Notes_MarketPlace.Models.EditNotesViewModel
+
+@{
+    ViewBag.Title = "Edit Note";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<section id="Add-notes">
+    <div class="c-up">
+        <img src="~/Content/User-Profile/banner-with-overlay.jpg" width="100%" class="img-responsive">
+
+        <div class="text-up">
+            <h3>Add Notes</h3>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("EditNotes", "SellYourNote", new { id = Model.ID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+
+
+
+        <div class="content-box-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="up-heading">
+                            <p>Basic Note Details</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-mar col-sm-6">
+                        <form>
+                            <div class="form-group s3">
+                                <label for="exampleInputName">Title<span>&#42;</span></label>
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Enter your notes tiitle" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group s3">
+                                <label for="name">Display Picture</label>
+                                <div class="custom-file" style="width:100%;">
+                                    <input type="file" class="custom-file-input form-control" id="customFileLangHTML" accept="image/jpeg, image/jpg, image/png" name="DisplayPicture">
+                                    <label class="custom-file-label" for="customFileLangHTML" style="width:100%;">
+
+                                        <div class="img-box">
+                                            <div class="content-img">
+                                                <img src="~/Content/User-Profile/upload.png" class="img-responsive" alt="Uplaod">
+                                                <h4>Upload a picture</h4>
+                                            </div>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(Model.Picture))
+                                        {
+                                            <p class="uploaded-data">To see your previously uploaded display notes picture <a href="@Url.Content(Model.Picture)" target="_blank">Click Here</a></p>
+                                        }
+                                    </label>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="form-group s3">
+                                <label for="exampleInputEmail1">Type<span>&#42;</span></label>
+                                @Html.DropDownListFor(model => model.NoteType, new SelectList(Model.NoteTypeList, "ID", "Name", Model.NoteType), "Select your notes type", new { @class = "form-control", id = "type" })
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="col-md-6 col-sm-6">
+
+
+                        <div class="form-group s3">
+                            <label for="exampleInputName">Category<span>&#42;</span></label>
+
+                            @Html.DropDownListFor(model => model.Category, new SelectList(Model.NoteCategoryList, "ID", "Name", Model.Category), "Select your notes Category", new { @class = "form-control", id = "category" })
+                            @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group s3">
+                            <label for="name">Upload Notes</label>
+
+
+                            <div class="custom-file" style="width:100%;">
+                                <input type="file" class="custom-file-input form-control" id="un" accept="application/pdf" , multiple="multiple" name="UploadNotes">
+                                <label class="custom-file-label" for="un" style="width:100%;">
+
+                                    <div class="img-box">
+                                        <div class="content-img">
+                                            <img src="~/Content/Front_Images/images/upload-note.png" class="img-responsive" alt="Uplaod">
+                                            <h4>Upload your notes</h4>
+                                        </div>
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(Model.Note))
+                                    {
+                                        <p class="uploaded-data">To see your previously uploaded notes <a href="@Url.Action("DownloadNotes", "SearchNotes", new { noteid = Model.NoteID })" target="_blank">Click Here</a></p>
+                                    }
+                                </label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.UploadNotes, "", new { @class = "text-danger" })
+
+
+
+                        </div>
+                        <div class="form-group s3">
+                            <label for="exampleInputName">Number of pages</label>
+                            @Html.TextBoxFor(model => model.NumberofPages, new { @class = "form-control", placeholder = "Enter number of pages" })
+                            @Html.ValidationMessageFor(model => model.NumberofPages, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea3">Description<span>&#42;</span></label>
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Enter your decription", rows = "5" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="up-heading">
+                        <p>Institution Information</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Country</label>
+                        @Html.DropDownListFor(model => model.Country, new SelectList(Model.CountryList, "ID", "Name", Model.Country), "Select your notes Category", new { @class = "form-control" })
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Institution Name</label>
+                        @Html.TextBoxFor(model => model.UniversityName, new { @class = "form-control", placeholder = "Enter your institution name" })
+                        @Html.ValidationMessageFor(model => model.UniversityName, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="up-heading">
+                        <p>Course Details</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Course Name</label>
+
+                        @Html.TextBoxFor(model => model.Course, new { @class = "form-control", placeholder = "Enter your course name" })
+                        @Html.ValidationMessageFor(model => model.Course, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Professor/Lecturer</label>
+                        @Html.TextBoxFor(model => model.Professor, new { @class = "form-control", placeholder = "Enter your professor name" })
+                        @Html.ValidationMessageFor(model => model.Professor, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Course Code</label>
+                        @Html.TextBoxFor(model => model.CourseCode, new { @class = "form-control", placeholder = "Enter your course code" })
+                        @Html.ValidationMessageFor(model => model.CourseCode, "", new { @class = "text-danger" })
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="up-heading">
+                        <p>Course Details</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <label for="exampleInputName">Sell For<span>&#42;</span></label>
+                    <div class="form-group s3">
+
+                        <div class="form-check form-check-inline checkbox-inline check-1">
+                            @Html.RadioButtonFor(model => model.IsPaid, false, new
+                            {
+                                @name = "IsPaid",
+
+                                @checked = "checked",
+                           @class = "form-check-input radio-button",
+                                id = "free"
+                            })
+                            <label class="form-check-label" for="free" style="margin-left:10px;">Free</label>
+                        </div>
+                        <div class="form-check form-check-inline checkbox-inline check-2">
+                            @Html.RadioButtonFor(model => model.IsPaid, true, new { @name = "IsPaid", @checked = "checked", @class = "form-check-input radio-button", id = "paid" })
+                            <label class="form-check-label" for="paid" style="margin-left:10px;">Paid</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group s3">
+                        <label for="exampleInputName">Sell Price<span>&#42;</span></label>
+                        @Html.TextBoxFor(model => model.SellingPrice, new { @class = "form-control", placeholder = "Enter your price" })
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group s3">
+                        <label for="name">Notes Preview</label>
+
+                        <div class="custom-file" style="width:100%;">
+                            <input type="file" class="custom-file-input form-control" id="np" accept="application/pdf" name="NotesPreview">
+                            <label class="custom-file-label" for="np" style="width:100%;">
+
+                                <div class="img-box">
+                                    <div class="content-img">
+                                        <img src="~/Content/Front_Images/images/upload-file.png" class="img-responsive" alt="Uplaod">
+                                        <h4>Upload a file</h4>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(Model.Preview))
+                                {
+                                    <p class="uploaded-data">To see your previously uploaded preview <a href="@Url.Content(Model.Preview)" target="_blank">Click Here</a></p>
+                                }
+                            </label>
+                        </div>
+                        @ViewBag.Notespreview
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+
+                    <a @Url.Action("~/SellYourNote/EditNotes")><button type="submit" class="btn btn-primary btn-add-note"><span> SAVE </span></button></a>
+
+                    <a data-target="#confirmation" role="button" data-toggle="modal"><button type="submit" class="btn btn-primary btn-add-note"><span>PUBLISH</span></button></a>
+
+                </div>
+                <div class="modal fade " id="confirmation" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog pop-up">
+                        <div class="modal-content">
+                            <div class="modal-confirm-body">
+                                <div>
+                                    <p class="confirm-text pop-up-text">
+                                        Publishing this note will send note to administrator for review,
+                                        once administrator review and approve then this note will be published to portal. Press yes to continue.
+                                    </p>
+
+                                    <div class="btn-confirm">
+                                        <a class="btn btn-yes" href="@Url.Action("PublishNote", new { id = @Model.ID })" id="confirmationbutton" role="button">YES</a>
+                                        <a class="btn btn-no" data-dismiss="modal" aria-label="Close" role="button">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    }
+</section>
+
+

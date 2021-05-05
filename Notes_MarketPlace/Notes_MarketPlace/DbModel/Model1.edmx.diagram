@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e9c01d43f24340b1b307346a8998c332" Name="Diagram1">
+        <EntityTypeShape EntityType="DataBaseModel.Country" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.Download" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.NoteCategory" Width="1.5" PointX="6" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.NoteType" Width="1.5" PointX="6" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.ReferenceData" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.SellerNote" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.SellerNotesAttachement" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.SellerNotesReportedIssue" Width="1.5" PointX="13.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.SellerNotesReview" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.SystemConfiguration" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.UserProfile" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.UserRole" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseModel.User" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Downloads_SellerNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Downloads_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Downloads_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReportedIssues_Downloads" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReviews_Downloads" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_NoteCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_NoteTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_ReferenceData_ReferenceData" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_ReferenceData" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_UserProfile_ReferenceData" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotes_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesAttachements_SellerNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReportedIssues_SellerNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReviews_SellerNotes" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReportedIssues_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_SellerNotesReviews_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_UserProfile_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseModel.FK_Users_UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
